@@ -1,0 +1,11 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow admin and API routes
+Disallow: /admin
+Disallow: /api/
+Disallow: /perfil
+
+# Sitemap
+Sitemap: https://nezusbisuteria.com/sitemap.xml
