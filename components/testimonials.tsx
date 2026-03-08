@@ -79,7 +79,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="py-10 md:py-16 lg:py-20 bg-white relative overflow-hidden">
+    <section id="testimonials" className="py-10 md:py-16 lg:py-32 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -128,28 +128,28 @@ export function Testimonials() {
                     transition={{ delay: index * 0.1, duration: 0.6 }}
                     className="h-full"
                   >
-                    <div className="relative h-full p-10 bg-white border border-black/10 hover:border-black/30 transition-colors duration-500 flex flex-col group">
+                    <div className="relative h-full p-6 md:p-8 bg-white border border-black/10 hover:border-black/30 transition-colors duration-500 flex flex-col group">
                       {/* Quote icon */}
                       <div className="absolute top-8 right-8 text-black/10 group-hover:text-black/20 transition-colors">
                         <Quote className="w-12 h-12" strokeWidth={1} />
                       </div>
 
                       {/* Stars */}
-                      <div className="flex gap-1 mb-8">
+                      <div className="flex gap-1 mb-4">
                         {Array(testimonial.rating)
                           .fill(0)
                           .map((_, i) => (
-                            <Star key={i} className="w-4 h-4 text-black fill-black" strokeWidth={1} />
+                            <Star key={i} className="w-4 h-4 text-[#D4AF37] fill-[#D4AF37]" strokeWidth={1} />
                           ))}
                       </div>
 
                       {/* Quote text */}
-                      <p className="text-black/80 leading-relaxed text-base mb-10 flex-1 font-light italic">
+                      <p className="text-black/80 leading-relaxed text-base mb-6 flex-1 font-light italic">
                         &ldquo;{testimonial.quote}&rdquo;
                       </p>
 
                       {/* Product purchased */}
-                      <div className="mb-8 inline-flex items-center gap-2 self-start border-b border-black/10 pb-2">
+                      <div className="mb-6 inline-flex items-center gap-2 self-start border-b border-black/10 pb-2">
                         <Sparkles className="w-3 h-3 text-black/60" strokeWidth={1.5} />
                         <span className="text-[10px] font-medium tracking-[0.2em] text-black/60 uppercase">
                           {testimonial.product}

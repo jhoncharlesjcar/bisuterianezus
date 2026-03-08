@@ -57,7 +57,7 @@ function CountdownTimer({ targetDate }: { targetDate: Date }) {
 
 export function Promotions() {
   return (
-    <section id="promociones" className="py-10 md:py-16 lg:py-20 bg-[#FAFAFA] relative overflow-hidden">
+    <section id="promociones" className="py-10 md:py-16 lg:py-32 bg-[#FAFAFA] relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -128,7 +128,7 @@ export function Promotions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="group relative overflow-hidden h-[240px] md:h-[285px] bg-[#EAEAEA] flex-1"
+              className="group relative overflow-hidden h-[240px] md:h-[285px] bg-[#EAEAEA] w-full lg:flex-1"
             >
               <Link href="/tienda?category=elegancia-nocturna" className="block h-full relative">
                 <Image
@@ -141,7 +141,7 @@ export function Promotions() {
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500" />
                 <div className="absolute inset-0 border border-black/5" />
 
-                <div className="absolute inset-0 p-8 flex flex-col justify-end z-10 text-white">
+                <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-end z-10 text-white">
                   <span className="text-[9px] font-medium uppercase tracking-[0.3em] text-white/80 mb-2">Cortesía de Nezus</span>
                   <h4 className="font-serif text-3xl font-light mb-2">Envío Gratuito</h4>
                   <p className="text-white/90 text-sm font-light">En seleccion de piezas sobre S/100</p>
@@ -154,7 +154,7 @@ export function Promotions() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="group relative overflow-hidden h-[240px] md:h-[285px] bg-[#EAEAEA] flex-1"
+              className="group relative overflow-hidden h-[240px] md:h-[285px] bg-[#EAEAEA] w-full lg:flex-1"
             >
               <Link href="/tienda?category=edicion-limitada" className="block h-full relative">
                 <Image
@@ -167,7 +167,7 @@ export function Promotions() {
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-500" />
                 <div className="absolute inset-0 border border-black/5" />
 
-                <div className="absolute inset-0 p-8 flex flex-col justify-end z-10 text-white">
+                <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-end z-10 text-white">
                   <span className="text-[9px] font-medium uppercase tracking-[0.3em] text-white/80 mb-2">Colecciones Efímeras</span>
                   <h4 className="font-serif text-3xl font-light mb-2">Edición Limitada</h4>
                   <p className="text-white/90 text-sm font-light">Curaduría de accesorios exclusivos</p>

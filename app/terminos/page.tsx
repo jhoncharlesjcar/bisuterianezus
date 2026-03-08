@@ -4,12 +4,12 @@ import { Footer } from "@/components/footer"
 export default function TerminosYCondiciones() {
     return (
         <main className="min-h-screen bg-[#FAFAFA]">
-            <Header />
+            <Header variant="solid" />
             <div className="pt-32 pb-24">
                 <div className="container mx-auto px-4 max-w-4xl">
                     <div className="mb-16">
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light text-black mb-6 tracking-tight">Términos y Condiciones</h1>
-                        <p className="text-black/60 text-lg font-light leading-relaxed">Última actualización: Noviembre 2025</p>
+                        <p className="text-black/60 text-lg font-light leading-relaxed">Última actualización: Marzo 2026</p>
                     </div>
 
                     <div className="space-y-12 text-black/80 font-light leading-relaxed">

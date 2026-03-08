@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
+import { checkRateLimit, getClientIp } from "@/lib/rate-limit"
 
 // GET /api/reviews?productId=xyz
 export async function GET(request: NextRequest) {
@@ -45,6 +46,16 @@ export async function GET(request: NextRequest) {
 // POST /api/reviews
 export async function POST(request: NextRequest) {
     try {
+        // S4: Rate limiting — 5 review submissions per minute per IP
+        const ip = getClientIp(request)
+        const rateCheck = checkRateLimit(`reviews:post:${ip}`, { maxRequests: 5, windowSeconds: 60 })
+        if (!rateCheck.success) {
+            return NextResponse.json(
+                { error: "Demasiadas solicitudes. Intenta de nuevo en unos minutos." },
+                { status: 429 }
+            )
+        }
+
         const supabase = await createClient()
         const {
             data: { user },

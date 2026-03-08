@@ -9,6 +9,7 @@ import { ThumbsUp } from "lucide-react"
 import type { Review, ReviewStats } from "@/lib/types"
 import { format } from "date-fns"
 import { es } from "date-fns/locale"
+import { ReviewSkeleton } from "@/components/ui/skeleton-gold"
 
 interface ProductReviewsProps {
     productId: string
@@ -39,7 +40,7 @@ export function ProductReviews({ productId }: ProductReviewsProps) {
     }
 
     if (loading) {
-        return <div className="text-black/40 text-sm font-light uppercase tracking-widest text-center py-12">Cargando reseñas...</div>
+        return <ReviewSkeleton />
     }
 
     return (

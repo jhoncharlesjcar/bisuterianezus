@@ -5,7 +5,7 @@ import Image from "next/image"
 export default function Nosotros() {
     return (
         <main className="min-h-screen bg-[#FAFAFA]">
-            <Header />
+            <Header variant="solid" />
             <div className="pt-32 pb-24">
                 <div className="container mx-auto px-4 max-w-5xl">
 

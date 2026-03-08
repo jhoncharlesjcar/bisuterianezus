@@ -83,7 +83,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         whileHover={{ y: -6, transition: { duration: 0.4 } }}
         className="group flex flex-col h-full bg-transparent"
       >
-        <div className="relative overflow-hidden bg-[#FAFAFA] aspect-[4/5] mb-3 md:mb-6">
+        <div className="relative overflow-hidden bg-[#FAFAFA] aspect-[4/5] mb-3 md:mb-4">
           <Link href={`/producto/${product.slug}`} className="block h-full relative">
             <Image
               src={product.image_url || "/placeholder.svg"}
@@ -152,11 +152,11 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
         {/* Content */}
         <div className="text-center px-4 flex-1 flex flex-col">
           <Link href={`/producto/${product.slug}`} className="block flex-1">
-            <h3 className="font-serif text-base md:text-lg tracking-wide text-foreground mb-1.5 md:mb-2 group-hover:text-black/60 transition-colors">
+            <h3 className="font-serif text-base md:text-lg tracking-[0.05em] text-foreground mb-1.5 md:mb-2 group-hover:text-black/60 transition-colors">
               {product.name}
             </h3>
             <div className="flex items-center justify-center gap-3">
-              <span className="text-sm font-medium tracking-wider text-black">
+              <span className="text-sm font-medium tracking-[0.1em] text-black">
                 {formatPrice(product.price)}
               </span>
               {product.compare_at_price && product.compare_at_price > product.price && (

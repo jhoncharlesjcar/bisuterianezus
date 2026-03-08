@@ -25,8 +25,58 @@ import { motion, AnimatePresence } from "framer-motion"
 
 import { categoryImages } from "@/lib/constants"
 
+const topBarMessages = [
+  "Envíos gratis a todo el Perú en compras mayores a S/100",
+  "Pago 100% Seguro · Yape · Plin · Transferencia Bancaria",
+  "Asesoría personalizada por WhatsApp +51 935 128 673",
+  "Lima · Arequipa · Cusco · Chiclayo · Piura · Huancayo · Ica",
+]
 
-export function Header() {
+function TopTicker({ scrolled, variant = "transparent" }: { scrolled: boolean, variant?: "transparent" | "solid" }) {
+  const [msgIndex, setMsgIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setMsgIndex((prev) => (prev + 1) % topBarMessages.length)
+    }, 4500)
+    return () => clearInterval(timer)
+  }, [])
+
+  const isSolid = scrolled || variant === "solid"
+
+  return (
+    <div className={cn(
+      "w-full transition-colors duration-500 z-30",
+      isSolid
+        ? "bg-black text-white py-2"
+        : "bg-white/10 backdrop-blur-md border-b border-white/10 py-2.5"
+    )}>
+      <div className="container mx-auto px-4 lg:px-12 max-w-7xl">
+        <div className="flex items-center justify-center">
+
+          <div className="relative w-full h-4 flex items-center justify-center overflow-hidden text-center">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={msgIndex}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.6, ease: [0.25, 0.4, 0, 1] }}
+                className="text-[9px] md:text-[10px] text-white uppercase tracking-[0.15em] md:tracking-[0.2em] font-medium absolute w-full"
+              >
+                {topBarMessages[msgIndex]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+export function Header({ variant = "transparent" }: { variant?: "transparent" | "solid" }) {
   const { user, profile, loading, signOut } = useAuth()
   const { itemCount: wishlistCount } = useWishlist()
   const router = useRouter()
@@ -43,6 +93,8 @@ export function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const isSolid = scrolled || variant === "solid"
 
   const loadCategories = async () => {
     const { data } = await supabase
@@ -70,19 +122,20 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled
-          ? "bg-white/95 backdrop-blur-md py-2 border-b border-black/5"
-          : "bg-white/90 backdrop-blur-md py-2 lg:bg-transparent lg:py-4 lg:backdrop-blur-none border-transparent"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex flex-col",
+        isSolid
+          ? "bg-white/95 backdrop-blur-md border-b border-black/5"
+          : "bg-white/90 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-none border-transparent"
       )}
     >
-      <div className="container mx-auto px-4 max-w-7xl">
+      <TopTicker scrolled={scrolled} variant={variant} />
+      <div className={cn("container mx-auto px-4 max-w-7xl transition-all duration-500", isSolid ? "py-2" : "py-2 lg:py-4")}>
         <div className="flex items-center justify-between h-14 lg:h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group relative z-50">
             <div className="flex flex-col">
-              <span className={cn("font-serif text-2xl md:text-3xl font-light tracking-tight leading-none transition-colors duration-500", scrolled ? "text-black" : "text-black lg:text-white")}>NEZUS</span>
-              <span className={cn("text-[8px] md:text-[9px] tracking-[0.3em] uppercase mt-1 transition-colors duration-500", scrolled ? "text-black/60" : "text-black/60 lg:text-white/60")}>Bisutería Artesanal Fina</span>
+              <span className={cn("font-serif text-2xl md:text-3xl font-light tracking-tight leading-none transition-colors duration-500", isSolid ? "text-black" : "text-black lg:text-white")}>NEZUS</span>
+              <span className={cn("text-[8px] md:text-[9px] tracking-[0.3em] uppercase mt-1 transition-colors duration-500", isSolid ? "text-black/60" : "text-black/60 lg:text-white/60")}>Bisutería Artesanal Fina</span>
             </div>
           </Link>
 
@@ -92,10 +145,10 @@ export function Header() {
               <Link
                 key={item}
                 href={item === "Inicio" ? "/" : `/#${item.toLowerCase()}`}
-                className={cn("relative text-xs font-medium tracking-[0.15em] uppercase transition-colors group py-2", scrolled ? "text-black/70 hover:text-black" : "text-white/80 hover:text-white")}
+                className={cn("relative text-[10px] font-medium tracking-[0.25em] uppercase transition-colors group py-2", isSolid ? "text-black/70 hover:text-black" : "text-white/80 hover:text-white")}
               >
                 {item}
-                <span className={cn("absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-500 group-hover:w-full", scrolled ? "bg-black" : "bg-white")} />
+                <span className={cn("absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-500 group-hover:w-full", isSolid ? "bg-black" : "bg-white")} />
               </Link>
             ))}
 
@@ -111,7 +164,7 @@ export function Header() {
                 }
               }}
             >
-              <button className={cn("flex items-center gap-2 text-xs font-medium tracking-[0.15em] uppercase transition-colors py-6 group", scrolled ? "text-black/70 hover:text-black" : "text-white/80 hover:text-white")}>
+              <button className={cn("flex items-center gap-2 text-[10px] font-medium tracking-[0.25em] uppercase transition-colors py-6 group", isSolid ? "text-black/70 hover:text-black" : "text-white/80 hover:text-white")}>
                 Tienda
                 <ChevronDown className={cn("w-3 h-3 transition-transform duration-500 opacity-50", showMegaMenu && "rotate-180")} />
               </button>
@@ -184,17 +237,17 @@ export function Header() {
               variant="ghost"
               size="icon"
               onClick={() => setSearchOpen(!searchOpen)}
-              className={cn("rounded-none transition-colors", scrolled ? "text-black hover:bg-black/5" : "text-black lg:text-white hover:bg-black/5 lg:hover:bg-white/10")}
+              className={cn("rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-black lg:text-white hover:bg-black/5 lg:hover:bg-white/10")}
             >
               <Search className="h-5 w-5" strokeWidth={1.5} />
             </Button>
 
             {user && (
               <Link href="/perfil">
-                <Button variant="ghost" size="icon" className={cn("relative rounded-none transition-colors", scrolled ? "text-black hover:bg-black/5" : "text-black lg:text-white hover:bg-black/5 lg:hover:bg-white/10")}>
+                <Button variant="ghost" size="icon" className={cn("relative rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-black lg:text-white hover:bg-black/5 lg:hover:bg-white/10")}>
                   <Heart className="h-5 w-5" strokeWidth={1.5} />
                   {wishlistCount > 0 && (
-                    <span className={cn("absolute top-1 right-1 text-[9px] w-4 h-4 flex items-center justify-center rounded-full", scrolled ? "bg-black text-white" : "bg-black text-white lg:bg-white lg:text-black")}>
+                    <span className={cn("absolute top-1 right-1 text-[9px] w-4 h-4 flex items-center justify-center rounded-full", isSolid ? "bg-black text-white" : "bg-black text-white lg:bg-white lg:text-black")}>
                       {wishlistCount}
                     </span>
                   )}
@@ -204,14 +257,14 @@ export function Header() {
 
             <CartSheet scrolled={scrolled} />
 
-            <div className={cn("hidden lg:block h-6 w-[1px] mx-2 transition-colors", scrolled ? "bg-black/10" : "bg-white/20")} />
+            <div className={cn("hidden lg:block h-6 w-[1px] mx-2 transition-colors", isSolid ? "bg-black/10" : "bg-white/20")} />
 
             {loading ? (
-              <div className={cn("hidden lg:block w-10 h-10 rounded-full animate-pulse", scrolled ? "bg-black/5" : "bg-white/10")} />
+              <div className={cn("hidden lg:block w-10 h-10 rounded-full animate-pulse", isSolid ? "bg-black/5" : "bg-white/10")} />
             ) : user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("rounded-none transition-colors", scrolled ? "text-black hover:bg-black/5" : "text-white hover:bg-white/10")}>
+                  <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-white hover:bg-white/10")}>
                     <User className="h-5 w-5" strokeWidth={1.5} />
                   </Button>
                 </DropdownMenuTrigger>
@@ -237,7 +290,7 @@ export function Header() {
               </DropdownMenu>
             ) : (
               <div className="hidden lg:flex items-center gap-4">
-                <Link href="/login" className={cn("text-xs font-medium tracking-[0.15em] uppercase transition-colors", scrolled ? "text-black/70 hover:text-black" : "text-white/80 hover:text-white")}>
+                <Link href="/login" className={cn("text-[10px] font-medium tracking-[0.25em] uppercase transition-colors", isSolid ? "text-black/70 hover:text-black" : "text-white/80 hover:text-white")}>
                   Login
                 </Link>
               </div>
@@ -246,7 +299,7 @@ export function Header() {
             {/* Mobile Menu Trigger */}
             <Sheet>
               <SheetTrigger asChild>
-                <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("lg:hidden rounded-none transition-colors", scrolled ? "text-black hover:bg-black/5" : "text-black hover:bg-black/5")}>
+                <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("lg:hidden rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-black hover:bg-black/5")}>
                   <Menu className="h-6 w-6" strokeWidth={1.5} />
                 </Button>
               </SheetTrigger>

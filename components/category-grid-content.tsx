@@ -40,7 +40,7 @@ export function CategoryGridContent({ categories }: { categories: Category[] }) 
                     </motion.p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 min-h-[400px]">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 min-h-[400px]">
                     {categories.map((category, index) => (
                         <motion.div
                             key={category.id}
@@ -67,7 +67,7 @@ export function CategoryGridContent({ categories }: { categories: Category[] }) 
                                 {/* Overlays */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-700 opacity-60 group-hover:opacity-80" />
 
-                                <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-12 text-center items-center">
+                                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 text-center items-center">
                                     <p className="text-[10px] text-white/70 font-medium uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-700 ease-out mb-3">
                                         Explorar
                                     </p>

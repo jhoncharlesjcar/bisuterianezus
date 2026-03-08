@@ -6,51 +6,14 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/hooks/use-toast"
-import { Mail, MapPin, Eye, EyeOff } from "lucide-react"
-import { SiWhatsapp, SiInstagram } from "@icons-pack/react-simple-icons"
+import { Eye, EyeOff } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { RevealWrapper, AnimatedLine } from "@/components/ui/text-reveal"
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { peruLocations } from "@/lib/peru-locations"
 import { useAuth } from "@/lib/auth-context"
 import { createClient } from "@/lib/supabase/client"
-
-const contactMethods = [
-  {
-    icon: SiWhatsapp,
-    title: "WhatsApp",
-    subtitle: "Respuesta inmediata",
-    value: "+51 935 128 673",
-    href: "https://wa.me/51935128673",
-    accent: "text-black",
-  },
-  {
-    icon: Mail,
-    title: "Correo",
-    subtitle: "Te respondemos en 24h",
-    value: "nezusbisuteria@gmail.com",
-    href: "mailto:nezusbisuteria@gmail.com",
-    accent: "text-black",
-  },
-  {
-    icon: SiInstagram,
-    title: "Instagram",
-    subtitle: "Síguenos y escríbenos",
-    value: "@aretesnezus",
-    href: "https://instagram.com/aretesnezus",
-    accent: "text-black",
-  },
-  {
-    icon: MapPin,
-    title: "Showroom",
-    subtitle: "Visítanos",
-    value: "Jr. José Gálvez 444 stand 25 Magdalena del Mar, Lima",
-    href: "https://www.google.com/maps/place/06000+Jr,+Jir%C3%B3n+Jos%C3%A9+G%C3%A1lvez+444,+Magdalena+del+Mar+15086",
-    accent: "text-black",
-  },
-]
 
 export function Contact() {
   const { toast } = useToast()
@@ -145,105 +108,46 @@ export function Contact() {
   }
 
   return (
-    <section id="contacto" className="pt-10 md:pt-16 lg:pt-20 bg-[#FAFAFA]">
-      <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-8 md:mb-12 lg:mb-16"
-        >
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <AnimatedLine className="w-12 text-black/30" direction="right" />
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-black/60">Contacto</span>
-            <AnimatedLine className="w-12 text-black/30" direction="left" />
-          </div>
-          <RevealWrapper>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light text-black mb-6 tracking-tight">
-              Estamos para <span className="italic text-black/70">ayudarte</span>
-            </h2>
-          </RevealWrapper>
-          <p className="text-black/60 max-w-xl mx-auto text-base md:text-lg font-light leading-relaxed">
-            Te asesoramos para encontrar la pieza perfecta o resolver cualquier duda que tengas.
-          </p>
-        </motion.div>
-
-        {/* Contact Methods Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 pb-16 md:pb-24">
-          {contactMethods.map((method, i) => (
-            <motion.a
-              key={i}
-              href={method.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className={cn(
-                "group relative p-8 md:p-10 border border-black/10 bg-white transition-all duration-300",
-                "hover:border-black/30 hover:shadow-md flex flex-col items-center text-center"
-              )}
-            >
-              <div
-                className={cn(
-                  "w-12 h-12 flex items-center justify-center mb-6 transition-transform duration-500",
-                  method.accent,
-                  "group-hover:scale-110"
-                )}
-              >
-                <method.icon className="w-8 h-8" strokeWidth={1} />
-              </div>
-              <h4 className="font-serif text-xl mb-2 text-black">{method.title}</h4>
-              <p className="text-[10px] text-black/50 uppercase tracking-[0.15em] mb-4">
-                {method.subtitle}
-              </p>
-              <p className="text-sm text-black/80 font-light mt-auto">{method.value}</p>
-            </motion.a>
-          ))}
-        </div>
-      </div>
+    <section className="bg-[#FAFAFA]">
 
       {/* Newsletter / Subscription Banner */}
-      <div className="w-full py-10 md:py-24 relative overflow-hidden mt-8 md:mt-16" style={{ backgroundColor: "#C9ADA1" }}>
+      <div className="w-full py-8 md:py-16 relative overflow-hidden mt-8 md:mt-16 flex items-center justify-center lg:justify-start" style={{ background: "linear-gradient(135deg, #FFF5F6 0%, #FFE4E8 50%, #FFD6DC 100%)" }}>
+
+        {/* Text Content */}
         <div className="container mx-auto px-4 relative z-10 w-full flex flex-col items-center">
+          <div className="w-full max-w-2xl flex flex-col items-center">
+            <h3 className="text-2xl md:text-3xl lg:text-[32px] font-serif text-black mb-6 md:mb-8 text-center tracking-wide">
+              Regístrate y consigue un 10 % de descuento
+            </h3>
 
-          <h3 className="text-2xl md:text-3xl lg:text-4xl font-serif text-black mb-6 md:mb-8 text-center tracking-wide">
-            Regístrate y consigue un 10 % de descuento
-          </h3>
+            <p className="text-black/80 font-normal text-[15px] md:text-base mb-8 md:mb-10 leading-relaxed text-center">
+              Entérate antes que nadie de todas las actualizaciones sobre nuevas<br className="hidden lg:block" />
+              colecciones, ideas de estilo y de regalo y acceso exclusivo. Regístrate hoy en<br className="hidden lg:block" />
+              el Nezus Club y recibe un 10 % de descuento* en tu próxima compra<br className="hidden lg:block" />
+              online (solo en artículos sin descuento). <Link href="/terminos" className="underline underline-offset-2 hover:text-black transition-colors">* Se aplican términos y condiciones</Link>
+            </p>
 
-          <p className="text-black/80 font-normal text-sm md:text-base mb-8 md:mb-10 leading-relaxed max-w-3xl xl:max-w-4xl text-center">
-            Entérate antes que nadie de todas las actualizaciones sobre nuevas<br className="hidden lg:block" />
-            colecciones, ideas de estilo y de regalo y acceso exclusivo. Regístrate hoy en<br className="hidden lg:block" />
-            el Nezus Club y recibe un 10 % de descuento* en tu próxima compra<br className="hidden lg:block" />
-            online (solo en artículos sin descuento). <Link href="/terminos" className="underline underline-offset-2 hover:text-black/60 transition-colors">* Se aplican términos y condiciones</Link>
-          </p>
-
-          <Button
-            onClick={() => { setIsModalOpen(true); setModalStep(1); }}
-            className="h-12 md:h-14 px-10 md:px-16 bg-black text-white hover:bg-black/90 rounded-none text-sm font-medium transition-colors"
-          >
-            Únete al club
-          </Button>
-
+            <Button
+              onClick={() => { setIsModalOpen(true); setModalStep(1); }}
+              className="h-12 md:h-14 px-12 md:px-16 bg-black text-white hover:bg-black/90 rounded-none text-sm font-medium transition-all duration-700 border border-[#D4AF37]/30 hover:border-[#D4AF37]/60"
+            >
+              Únete al club
+            </Button>
+          </div>
         </div>
 
-        {/* Decorative 3D premium emblem on the right — Swarovski-style */}
+        {/* Decorative 3D premium emblem */}
         <div
-          className="hidden lg:flex absolute right-0 top-0 bottom-0 w-[400px] xl:w-[480px] items-center justify-center pointer-events-none"
-          style={{
-            maskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0.85) 100%)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0.85) 100%)"
-          }}
+          className="absolute right-[-20%] top-1/2 -translate-y-1/2 w-[280px] md:w-[350px] lg:w-[400px] xl:w-[450px] flex items-center justify-center pointer-events-none opacity-20 lg:opacity-100 lg:-right-[5%] xl:right-0"
         >
-          <img
-            src="/Logo-3D-emblem.png.png"
-            alt=""
-            aria-hidden="true"
-            className="w-[340px] xl:w-[400px] h-auto object-contain"
-            style={{ filter: "contrast(1.15) saturate(1.4) brightness(1.08)" }}
-          />
+          <div className="relative w-full aspect-square flex items-center justify-center">
+            <img
+              src="/club-emblem.png"
+              alt="Nezus 3D Logo"
+              aria-hidden="true"
+              className="w-[85%] h-[85%] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.15)]"
+            />
+          </div>
         </div>
       </div>
 

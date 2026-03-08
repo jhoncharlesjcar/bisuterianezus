@@ -40,7 +40,7 @@ export function Lookbook() {
     const containerRef = useRef<HTMLDivElement>(null)
 
     return (
-        <section ref={containerRef} className="py-10 md:py-16 lg:py-20 bg-[#FAFAFA] overflow-hidden">
+        <section ref={containerRef} className="py-10 md:py-16 lg:py-32 bg-[#FAFAFA] overflow-hidden">
             <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-7xl">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
@@ -56,7 +56,7 @@ export function Lookbook() {
                     </div>
                     <RevealWrapper>
                         <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-black mb-8 leading-[1.1] font-light">
-                            Lookbook <span className="italic">2026</span>
+                            Lookbook <span className="italic">20</span>
                         </h2>
                     </RevealWrapper>
                     <motion.p
@@ -111,17 +111,15 @@ function CollectionItem({ collection, index }: { collection: any, index: number 
                 <div className="relative aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-neutral-100/50">
                     <motion.div
                         style={{ y: imageY }}
-                        className="absolute inset-0 w-full h-full flex items-center justify-center p-8 md:p-16"
+                        className="absolute inset-[-10%] w-[120%] h-[120%]"
                     >
-                        <div className="relative w-full h-full">
-                            <Image
-                                src={collection.image}
-                                alt={collection.title}
-                                fill
-                                className="object-contain drop-shadow-2xl"
-                                sizes="(max-width: 1024px) 100vw, 60vw"
-                            />
-                        </div>
+                        <Image
+                            src={collection.image}
+                            alt={collection.title}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 1024px) 100vw, 60vw"
+                        />
                     </motion.div>
                 </div>
             </motion.div>
@@ -155,7 +153,7 @@ function CollectionItem({ collection, index }: { collection: any, index: number 
                         <Link href={collection.link}>
                             <Button
                                 variant="outline"
-                                className="h-14 px-10 rounded-none border-black/20 text-black hover:bg-black hover:text-white transition-colors uppercase tracking-widest text-xs font-medium"
+                                className="h-14 px-10 rounded-none border-[#D4AF37]/30 text-black hover:bg-black hover:text-white hover:border-black transition-all duration-700 uppercase tracking-widest text-xs font-medium"
                             >
                                 Explorar Colección
                             </Button>

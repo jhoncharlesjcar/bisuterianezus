@@ -1,12 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
-    // Note: Enable after ensuring all SSG pages work without database
-    // Current issue: Dynamic pages try to fetch Supabase during static generation
     ignoreBuildErrors: false,
   },
   images: {
-    // Enable image optimization for better performance
     remotePatterns: [
       {
         protocol: 'https',
@@ -46,6 +43,27 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()',
+          },
+          // S3: Content Security Policy
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "img-src 'self' data: blob: https://res.cloudinary.com https://*.supabase.co https://images.unsplash.com",
+              "font-src 'self' https://fonts.gstatic.com",
+              "connect-src 'self' https://*.supabase.co https://res.cloudinary.com https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+              "media-src 'self' https://res.cloudinary.com",
+              "frame-ancestors 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+            ].join('; '),
+          },
+          // S8: Explicit CORS — same-origin only for API routes
+          {
+            key: 'X-Permitted-Cross-Domain-Policies',
+            value: 'none',
           },
         ],
       },

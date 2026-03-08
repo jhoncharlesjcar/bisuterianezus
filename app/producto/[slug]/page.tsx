@@ -70,8 +70,8 @@ export default async function ProductPage({ params }: PageProps) {
 
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
+    <div className="min-h-screen flex flex-col pt-16">
+      <Header variant="solid" />
       <main className="flex-1">
         <ProductDetails product={product} />
 

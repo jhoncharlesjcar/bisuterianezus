@@ -168,7 +168,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFA]">
-      <Header />
+      <Header variant="solid" />
       <main className="flex-1 container mx-auto px-4 py-16 md:py-24 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

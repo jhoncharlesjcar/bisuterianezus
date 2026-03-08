@@ -61,14 +61,18 @@ export function About() {
             {/* Mission Section - Minimalist */}
             <div className="pt-8 block">
               <FadeIn delay={0.4} direction="up">
-                <div className="bg-white border border-black/5 p-8 relative overflow-hidden group hover:border-black/10 transition-colors">
+                <div style={{ background: "linear-gradient(135deg, #FFF5F6 0%, #FFE4E8 50%, #FFD6DC 100%)" }} className="p-8 relative overflow-hidden group transition-colors border-none">
                   <div className="relative z-10 flex flex-col sm:flex-row gap-8 items-start sm:items-center">
-                    <div className="w-20 h-20 relative flex-shrink-0">
-                      <Image src="/Logo-3D-emblem.png.png" alt="Nezus Logo" fill sizes="80px" className="object-contain" />
+                    <div className="w-20 h-20 relative flex-shrink-0 flex items-center justify-center">
+                      <img
+                        src="/club-emblem.png"
+                        alt="Nezus Logo"
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                     <div>
-                      <h3 className="text-xs uppercase tracking-[0.2em] font-medium text-black/50 mb-3">Nuestra Misión</h3>
-                      <p className="font-serif text-lg leading-relaxed text-black/80 italic">
+                      <h3 className="text-xs uppercase tracking-[0.2em] font-medium text-black/60 mb-3">Nuestra Misión</h3>
+                      <p className="font-serif text-lg leading-relaxed text-black/90 italic">
                         "Destacar la belleza intrínseca de cada mujer a través de accesorios cuidadosamente seleccionados que irradian distinción y estilo."
                       </p>
                     </div>
@@ -103,11 +107,11 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="absolute -bottom-6 -left-6 md:-bottom-12 md:-left-12 bg-white p-6 md:p-8 border border-black/5 max-w-[240px] md:max-w-[280px] hidden sm:block z-10"
+              className="absolute -bottom-6 -left-6 md:-bottom-8 md:-left-8 bg-white p-5 md:p-6 border border-black/5 max-w-[220px] md:max-w-[260px] hidden sm:block z-10"
             >
               <div className="space-y-4">
                 <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-black text-black" />)}
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-[#D4AF37] text-[#D4AF37]" />)}
                 </div>
                 <p className="font-serif text-base md:text-lg text-black leading-snug">"Curaduría de accesorios que elevan cualquier look."</p>
                 <div className="pt-2 border-t border-black/10">

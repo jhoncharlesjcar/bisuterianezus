@@ -57,7 +57,7 @@ export function StarRating({
                             className={cn(
                                 sizeClasses[size],
                                 isFilled || isPartial
-                                    ? "fill-yellow-400 text-yellow-400"
+                                    ? "fill-[#D4AF37] text-[#D4AF37]"
                                     : "fill-none text-gray-300"
                             )}
                         />
@@ -67,7 +67,7 @@ export function StarRating({
                                 style={{ width: `${(rating % 1) * 100}%` }}
                             >
                                 <Star
-                                    className={cn(sizeClasses[size], "fill-yellow-400 text-yellow-400")}
+                                    className={cn(sizeClasses[size], "fill-[#D4AF37] text-[#D4AF37]")}
                                 />
                             </div>
                         )}

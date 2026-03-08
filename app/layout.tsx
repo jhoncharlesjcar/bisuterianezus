@@ -4,6 +4,7 @@ import { Playfair_Display, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "@/components/ui/toaster"
 import { Providers } from "@/components/providers"
+import { PageTransition } from "@/components/page-transition"
 import "./globals.css"
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-sans" })
@@ -59,9 +60,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`} suppressHydrationWarning>
+      <body className={`${inter.className} antialiased`}>
         <Providers>
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
           <Toaster />
           <Analytics />
         </Providers>
