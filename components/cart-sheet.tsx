@@ -35,7 +35,7 @@ export function CartSheet({ scrolled = true }: CartSheetProps) {
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
                 <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("relative rounded-none transition-colors", scrolled ? "text-black hover:bg-black/5" : "text-black lg:text-white hover:bg-black/5 lg:hover:bg-white/10")}>
-                    <ShoppingCart className="h-5 w-5" strokeWidth={1.5} />
+                    <ShoppingCart className="h-5 w-5" strokeWidth={1} />
                     {itemCount > 0 && (
                         <span className={cn("absolute -top-1 -right-1 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center", scrolled ? "bg-black text-white" : "bg-black text-white lg:bg-white lg:text-black")}>
                             {itemCount}
@@ -103,7 +103,7 @@ export function CartSheet({ scrolled = true }: CartSheetProps) {
                                                         onClick={() => removeFromCart(item.product.id)}
                                                         className="text-black/30 hover:text-black transition-colors p-1"
                                                     >
-                                                        <X className="h-4 w-4" strokeWidth={1.5} />
+                                                        <X className="h-4 w-4" strokeWidth={1} />
                                                     </button>
                                                 </div>
                                                 <div className="flex items-center gap-4 mt-4">
@@ -112,14 +112,14 @@ export function CartSheet({ scrolled = true }: CartSheetProps) {
                                                             className="w-8 h-8 flex items-center justify-center text-black/60 hover:text-black hover:bg-black/5 transition-colors"
                                                             onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                                                         >
-                                                            <Minus className="h-3 w-3" strokeWidth={1.5} />
+                                                            <Minus className="h-3 w-3" strokeWidth={1} />
                                                         </button>
                                                         <span className="text-xs font-medium w-8 text-center text-black">{item.quantity}</span>
                                                         <button
                                                             className="w-8 h-8 flex items-center justify-center text-black/60 hover:text-black hover:bg-black/5 transition-colors"
                                                             onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                                                         >
-                                                            <Plus className="h-3 w-3" strokeWidth={1.5} />
+                                                            <Plus className="h-3 w-3" strokeWidth={1} />
                                                         </button>
                                                     </div>
                                                 </div>
@@ -156,7 +156,7 @@ export function CartSheet({ scrolled = true }: CartSheetProps) {
                                 </div>
                             ) : (
                                 <div className="flex items-center justify-center gap-2 py-1">
-                                    <Truck className="w-4 h-4 text-black/60" strokeWidth={1.5} />
+                                    <Truck className="w-4 h-4 text-black/60" strokeWidth={1} />
                                     <span className="text-xs font-medium text-black uppercase tracking-widest">Envío gratis aplicado</span>
                                 </div>
                             )}
@@ -168,7 +168,7 @@ export function CartSheet({ scrolled = true }: CartSheetProps) {
                                 >
                                     <SiWhatsapp className="mr-3 h-4 w-4" />
                                     <span className="uppercase tracking-widest text-xs font-medium">Comprar por WhatsApp</span>
-                                    <ChevronRight className="ml-3 h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
+                                    <ChevronRight className="ml-3 h-4 w-4 transition-transform group-hover:translate-x-1" strokeWidth={1} />
                                 </Button>
                             </div>
                             <p className="text-[10px] text-center text-black/40 uppercase tracking-widest">

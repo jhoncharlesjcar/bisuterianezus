@@ -130,12 +130,94 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
     >
       <TopTicker scrolled={scrolled} variant={variant} />
       <div className={cn("container mx-auto px-4 max-w-7xl transition-all duration-500", isSolid ? "py-2" : "py-2 lg:py-4")}>
-        <div className="flex items-center justify-between h-14 lg:h-16">
+        <div className="grid grid-cols-[1fr_auto_1fr] lg:flex lg:justify-between items-center h-14 lg:h-16 w-full">
+          {/* Mobile Left Actions */}
+          <div className="flex items-center lg:hidden justify-self-start -ml-2">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-black hover:bg-black/5")}>
+                  <Menu className="h-6 w-6" strokeWidth={1} />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] sm:w-[400px] bg-white border-r border-black/10 p-0">
+                <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
+                <div className="flex flex-col h-full bg-white">
+                  <div className="p-6 border-b border-black/5 flex items-center gap-3">
+                    <div className="flex flex-col">
+                      <span className="font-serif font-light text-2xl">NEZUS</span>
+                      <span className="text-[8px] tracking-[0.3em] font-medium text-black/40 uppercase">Bisutería Artesanal Fina</span>
+                    </div>
+                  </div>
+
+                  <nav className="flex-1 overflow-y-auto py-8 text-center space-y-6">
+                    <Link href="/" className="block text-2xl font-serif font-light tracking-tight hover:opacity-60 transition-opacity">Inicio</Link>
+                    <Link href="/tienda" className="block text-2xl font-serif font-light tracking-tight hover:opacity-60 transition-opacity">Tienda</Link>
+                    <Link href="/#nosotros" className="block text-2xl font-serif font-light tracking-tight hover:opacity-60 transition-opacity">Nosotros</Link>
+                    <Link href="/#contacto" className="block text-2xl font-serif font-light tracking-tight hover:opacity-60 transition-opacity">Contacto</Link>
+
+                    <div className="pt-8 border-t border-black/5">
+                      <h4 className="text-[10px] font-medium uppercase tracking-[0.3em] text-black/40 mb-6">Categorías</h4>
+                      <div className="space-y-4">
+                        {categories.map((category) => (
+                          <Link
+                            key={category.id}
+                            href={`/tienda?category=${category.slug}`}
+                            className="block py-2 text-sm font-light text-black/70 hover:text-black transition-colors"
+                          >
+                            {category.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </nav>
+
+                  <div className="p-8 border-t border-black/5 bg-[#FAFAFA]">
+                    {user ? (
+                      <div className="space-y-4 text-center">
+                        <Link href="/perfil" className="block text-sm font-medium tracking-[0.2em] uppercase hover:opacity-60">Mi Cuenta</Link>
+                        <button
+                          onClick={handleSignOut}
+                          className="w-full text-xs text-black/50 hover:text-black transition-colors uppercase tracking-widest mt-4"
+                        >
+                          Cerrar Sesión
+                        </button>
+                      </div>
+                    ) : (
+                      <div className="flex flex-col gap-4">
+                        <Button className="w-full bg-black text-white rounded-none hover:bg-black/80 font-medium tracking-[0.2em] uppercase text-xs h-12" asChild>
+                          <Link href="/login">Ingresar / Unirse</Link>
+                        </Button>
+                      </div>
+                    )}
+
+                    <div className="mt-12 flex justify-center gap-8">
+                      <a href="https://instagram.com/nezusbisuteria" target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-black transition-colors">
+                        <SiInstagram className="w-4 h-4" />
+                      </a>
+                      <a href="https://wa.me/51935128673" target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-black transition-colors">
+                        <SiWhatsapp className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setSearchOpen(!searchOpen)}
+              className={cn("rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-black hover:bg-black/5")}
+            >
+              <Search className="h-5 w-5" strokeWidth={1} />
+            </Button>
+          </div>
+
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group relative z-50">
-            <div className="flex flex-col">
-              <span className={cn("font-serif text-2xl md:text-3xl font-light tracking-tight leading-none transition-colors duration-500", isSolid ? "text-black" : "text-black lg:text-white")}>NEZUS</span>
-              <span className={cn("text-[8px] md:text-[9px] tracking-[0.3em] uppercase mt-1 transition-colors duration-500", isSolid ? "text-black/60" : "text-black/60 lg:text-white/60")}>Bisutería Artesanal Fina</span>
+          <Link href="/" className="flex items-center group relative z-50 justify-self-center lg:justify-self-auto">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+              <span className={cn("font-serif text-[22px] md:text-3xl font-light tracking-tight leading-none transition-colors duration-500", isSolid ? "text-black" : "text-black lg:text-white")}>NEZUS</span>
+              <span className={cn("text-[5px] md:text-[9px] tracking-[0.3em] uppercase mt-1 transition-colors duration-500", isSolid ? "text-black/60" : "text-black/60 lg:text-white/60")}>Bisutería Artesanal Fina</span>
             </div>
           </Link>
 
@@ -231,21 +313,21 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
             </div>
           </nav>
 
-          {/* Action Buttons */}
-          <div className="flex items-center gap-2 lg:gap-4 relative z-50">
+          {/* Action Buttons Right */}
+          <div className="flex items-center justify-end lg:gap-4 relative z-50 justify-self-end -mr-2 lg:mr-0">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setSearchOpen(!searchOpen)}
-              className={cn("rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-black lg:text-white hover:bg-black/5 lg:hover:bg-white/10")}
+              className={cn("hidden lg:flex rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-white hover:bg-white/10")}
             >
-              <Search className="h-5 w-5" strokeWidth={1.5} />
+              <Search className="h-5 w-5" strokeWidth={1} />
             </Button>
 
             {user && (
               <Link href="/perfil">
                 <Button variant="ghost" size="icon" className={cn("relative rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-black lg:text-white hover:bg-black/5 lg:hover:bg-white/10")}>
-                  <Heart className="h-5 w-5" strokeWidth={1.5} />
+                  <Heart className="h-5 w-5" strokeWidth={1} />
                   {wishlistCount > 0 && (
                     <span className={cn("absolute top-1 right-1 text-[9px] w-4 h-4 flex items-center justify-center rounded-full", isSolid ? "bg-black text-white" : "bg-black text-white lg:bg-white lg:text-black")}>
                       {wishlistCount}
@@ -264,8 +346,8 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
             ) : user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-white hover:bg-white/10")}>
-                    <User className="h-5 w-5" strokeWidth={1.5} />
+                  <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("hidden lg:flex rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-white hover:bg-white/10")}>
+                    <User className="h-5 w-5" strokeWidth={1} />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56 p-2 bg-white border border-black/10 shadow-xl rounded-none">
@@ -295,77 +377,6 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
                 </Link>
               </div>
             )}
-
-            {/* Mobile Menu Trigger */}
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("lg:hidden rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-black hover:bg-black/5")}>
-                  <Menu className="h-6 w-6" strokeWidth={1.5} />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white border-l border-black/10 p-0">
-                <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
-                <div className="flex flex-col h-full bg-white">
-                  <div className="p-6 border-b border-black/5 flex items-center gap-3">
-                    <div className="flex flex-col">
-                      <span className="font-serif font-light text-2xl">NEZUS</span>
-                      <span className="text-[8px] tracking-[0.3em] font-medium text-black/40 uppercase">Bisutería Artesanal Fina</span>
-                    </div>
-                  </div>
-
-                  <nav className="flex-1 overflow-y-auto py-8 text-center space-y-6">
-                    <Link href="/" className="block text-2xl font-serif font-light tracking-tight hover:opacity-60 transition-opacity">Inicio</Link>
-                    <Link href="/tienda" className="block text-2xl font-serif font-light tracking-tight hover:opacity-60 transition-opacity">Tienda</Link>
-                    <Link href="/#nosotros" className="block text-2xl font-serif font-light tracking-tight hover:opacity-60 transition-opacity">Nosotros</Link>
-                    <Link href="/#contacto" className="block text-2xl font-serif font-light tracking-tight hover:opacity-60 transition-opacity">Contacto</Link>
-
-                    <div className="pt-8 border-t border-black/5">
-                      <h4 className="text-[10px] font-medium uppercase tracking-[0.3em] text-black/40 mb-6">Categorías</h4>
-                      <div className="space-y-4">
-                        {categories.map((category) => (
-                          <Link
-                            key={category.id}
-                            href={`/tienda?category=${category.slug}`}
-                            className="block py-2 text-sm font-light text-black/70 hover:text-black transition-colors"
-                          >
-                            {category.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </nav>
-
-                  <div className="p-8 border-t border-black/5 bg-[#FAFAFA]">
-                    {user ? (
-                      <div className="space-y-4 text-center">
-                        <Link href="/perfil" className="block text-sm font-medium tracking-[0.2em] uppercase hover:opacity-60">Mi Cuenta</Link>
-                        <button
-                          onClick={handleSignOut}
-                          className="w-full text-xs text-black/50 hover:text-black transition-colors uppercase tracking-widest mt-4"
-                        >
-                          Cerrar Sesión
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="flex flex-col gap-4">
-                        <Button className="w-full bg-black text-white rounded-none hover:bg-black/80 font-medium tracking-[0.2em] uppercase text-xs h-12" asChild>
-                          <Link href="/login">Ingresar / Unirse</Link>
-                        </Button>
-                      </div>
-                    )}
-
-                    <div className="mt-12 flex justify-center gap-8">
-                      <a href="https://instagram.com/nezusbisuteria" target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-black transition-colors">
-                        <SiInstagram className="w-4 h-4" />
-                      </a>
-                      <a href="https://wa.me/51935128673" target="_blank" rel="noopener noreferrer" className="text-black/40 hover:text-black transition-colors">
-                        <SiWhatsapp className="w-4 h-4" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
           </div>
         </div>
       </div>
