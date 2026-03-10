@@ -40,7 +40,7 @@ export function Lookbook() {
     const containerRef = useRef<HTMLDivElement>(null)
 
     return (
-        <section ref={containerRef} className="py-10 md:py-16 lg:py-32 bg-[#FAFAFA] overflow-hidden">
+        <section id="lookbook" ref={containerRef} className="py-10 md:py-16 lg:py-32 bg-[#FAFAFA] overflow-hidden">
             <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-7xl">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
@@ -56,7 +56,7 @@ export function Lookbook() {
                     </div>
                     <RevealWrapper>
                         <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif text-black mb-8 leading-[1.1] font-light">
-                            Lookbook <span className="italic">20</span>
+                            Lookbook <span className="italic">2026</span>
                         </h2>
                     </RevealWrapper>
                     <motion.p

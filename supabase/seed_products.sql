@@ -32,7 +32,7 @@ VALUES
 ('Aretes Largo Turquesa', 'aretes-largo-turquesa', 'Aretes largos con piedras turquesa', 62, '/images/img-20251121-wa0245.jpg', (SELECT id FROM categories WHERE slug = 'aretes'), true, false),
 
 -- 9. Aretes Corazón Piedras Verdes
-('Aretes Corazón Piedras Verdes', 'aretes-corazon-piedras-verdes', 'Hermosos aretes con corazón y piedras verdes', 60, '/images/img-20251121-wa0248.jpg', (SELECT id FROM categories WHERE slug = 'aretes'), true, false),
+('Aretes Corazón Piedras Verdes', 'aretes-corazon-piedras-verdes', 'Hermosos aretes con corazón y piedras verdes', 60, '/images/img-20251121-wa0248.jpg', (SELECT id FROM categories WHERE slug = 'geometria-del-lujo'), true, false),
 
 -- 10. Aretes Ovalados Multicolor
 ('Aretes Ovalados Multicolor', 'aretes-ovalados-multicolor', 'Aretes ovalados con cuentas multicolor', 47, '/images/img-20251121-wa0244.jpg', (SELECT id FROM categories WHERE slug = 'aretes'), true, false),
@@ -56,7 +56,7 @@ VALUES
 ('Aretes Luna y Perla Azul', 'aretes-luna-y-perla-azul', 'Aretes con diseño de luna y perla azul natural', 55, '/images/img-20251121-wa0249.jpg', (SELECT id FROM categories WHERE slug = 'aretes'), true, false),
 
 -- 17. Aretes Perlas Racimo
-('Aretes Perlas Racimo', 'aretes-perlas-racimo', 'Elegantes aretes con racimo de perlas', 68, '/images/img-20251121-wa0254.jpg', (SELECT id FROM categories WHERE slug = 'aretes'), true, false),
+('Aretes Perlas Racimo', 'aretes-perlas-racimo', 'Elegantes aretes con racimo de perlas', 68, '/images/img-20251121-wa0254.jpg', (SELECT id FROM categories WHERE slug = 'elegancia-nocturna'), true, false),
 
 -- 18. Aretes Corazón Verde Esmeralda
 ('Aretes Corazón Verde Esmeralda', 'aretes-corazon-verde-esmeralda', 'Aretes de corazón con piedras verdes esmeralda', 58, '/images/img-20251121-wa0257.jpg', (SELECT id FROM categories WHERE slug = 'aretes'), true, false),
@@ -68,7 +68,13 @@ VALUES
 ('Aretes Luna Cristal Azul', 'aretes-luna-cristal-azul', 'Aretes con diseño de luna y cristales azules', 60, '/images/img-20251121-wa0250.jpg', (SELECT id FROM categories WHERE slug = 'aretes'), true, false),
 
 -- 26. Aretes Gota Dorada con Cristales (Extra from list)
-('Aretes Gota Dorada con Cristales', 'aretes-gota-dorada-con-cristales', 'Elegantes aretes en forma de gota con alambre dorado y cristales champagne', 75, '/images/aretes-gota-dorada-cristales.jpg', (SELECT id FROM categories WHERE slug = 'aretes'), true, true)
+('Aretes Gota Dorada con Cristales', 'aretes-gota-dorada-con-cristales', 'Elegantes aretes en forma de gota con alambre dorado y cristales champagne', 75, '/images/aretes-gota-dorada-cristales.jpg', (SELECT id FROM categories WHERE slug = 'aretes'), true, true),
+
+-- 27. Collar Perlas con Flor Lila
+('Collar Perlas con Flor Lila', 'collar-perlas-flor-lila', 'Hermoso collar de perlas de doble capa con dije de flor lila', 95, '/images/collar-perlas-flor-lila.jpg', (SELECT id FROM categories WHERE slug = 'collares'), true, true),
+
+-- 28. Aretes Mandala Negro Celeste
+('Aretes Mandala Negro Celeste', 'aretes-mandala-negro-celeste', 'Espectaculares aretes tejidos en forma de mandala con cristales negros y celestes.', 85, '/images/lifestyle/lifestyle-aretes-mandala-negro-celeste.png', (SELECT id FROM categories WHERE slug = 'resplandor-estival'), true, true)
 
 ON CONFLICT (slug) DO UPDATE
 SET

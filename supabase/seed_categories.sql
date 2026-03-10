@@ -11,7 +11,10 @@ VALUES
     ('Collares', 'collares', '/images/img-20251121-wa0250.jpg', 'El toque perfecto para tu cuello'),
     ('Pulseras', 'pulseras', '/images/img-20251121-wa0248.jpg', 'Detalles que adornan tus manos'),
     ('Anillos', 'anillos', '/images/img-20251121-wa0252.jpg', 'Símbolos de estilo y compromiso'),
-    ('Medallas', 'medallas', '/images/img-20251121-wa0254.jpg', 'Recuerdos y significados especiales')
+    ('Medallas', 'medallas', '/images/img-20251121-wa0254.jpg', 'Recuerdos y significados especiales'),
+    ('Resplandor Estival', 'resplandor-estival', '/images/lifestyle/lifestyle-aretes-mandala-negro-celeste.png', 'Una celebración del brillo vibrante.'),
+    ('Elegancia Nocturna', 'elegancia-nocturna', '/images/lifestyle/product_17_lifestyle.png', 'El complemento definitivo para cenas de gala.'),
+    ('Geometría del Lujo', 'geometria-del-lujo', '/images/lifestyle/lifestyle-corazon-piedras-verdes.png', 'El encanto de la geometría cristalina.')
 ON CONFLICT (slug) DO UPDATE 
 SET 
   image_url = EXCLUDED.image_url,
