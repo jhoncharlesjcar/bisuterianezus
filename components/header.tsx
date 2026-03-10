@@ -62,7 +62,7 @@ function TopTicker({ scrolled, variant = "transparent" }: { scrolled: boolean, v
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.6, ease: [0.25, 0.4, 0, 1] }}
-                className="text-[9px] md:text-[10px] text-white uppercase tracking-[0.15em] md:tracking-[0.2em] font-medium absolute w-full"
+                className="text-[10px] md:text-xs text-white uppercase tracking-[0.15em] md:tracking-[0.2em] font-medium absolute w-full"
               >
                 {topBarMessages[msgIndex]}
               </motion.p>
@@ -325,7 +325,7 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
                           <Link
                             key={category.id}
                             href={`/tienda?category=${category.slug}`}
-                            className="block text-sm font-light text-black/70 hover:text-black transition-colors"
+                            className="block py-2 text-sm font-light text-black/70 hover:text-black transition-colors"
                           >
                             {category.name}
                           </Link>

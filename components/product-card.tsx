@@ -120,7 +120,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             </button>
             <button
               onClick={handleQuickView}
-              className="w-8 h-8 md:w-10 md:h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors shadow-sm md:hover:bg-black md:hover:text-white"
+              className="hidden md:flex w-8 h-8 md:w-10 md:h-10 bg-white/90 backdrop-blur-sm rounded-full items-center justify-center transition-colors shadow-sm md:hover:bg-black md:hover:text-white"
               aria-label="Vista rápida"
             >
               <Eye className="h-3.5 w-3.5 md:h-4 md:w-4" />

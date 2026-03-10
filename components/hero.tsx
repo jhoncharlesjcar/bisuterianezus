@@ -183,7 +183,7 @@ export function Hero() {
               >
                 <MagneticButton strength={0.15}>
                   <Link href={slides[currentSlide].ctaLink}>
-                    <Button className="bg-white hover:bg-white/90 text-black px-6 py-4 md:px-12 md:py-7 rounded-none text-[10px] md:text-xs tracking-[0.25em] uppercase font-bold transition-all duration-700 shadow-2xl hover:shadow-[0_20px_60px_rgba(255,255,255,0.3)] border border-[#D4AF37]/30 hover:border-[#D4AF37]/60">
+                    <Button className="bg-white hover:bg-white/90 text-black px-6 py-4 md:px-12 md:py-7 rounded-none text-[11px] md:text-xs tracking-[0.25em] uppercase font-bold transition-all duration-700 shadow-2xl hover:shadow-[0_20px_60px_rgba(255,255,255,0.3)] border border-[#D4AF37]/30 hover:border-[#D4AF37]/60">
                       {slides[currentSlide].cta}
                     </Button>
                   </Link>

@@ -131,7 +131,7 @@ function CollectionItem({ collection, index }: { collection: any, index: number 
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
                 className={cn(
-                    "lg:col-span-5 space-y-10 text-center lg:text-left",
+                    "lg:col-span-5 space-y-10 text-left",
                     !isEven && "lg:order-1"
                 )}
             >
@@ -144,7 +144,7 @@ function CollectionItem({ collection, index }: { collection: any, index: number 
                     </h3>
                 </div>
 
-                <p className="text-base md:text-lg text-black/60 font-light leading-relaxed tracking-wide max-w-md mx-auto lg:mx-0">
+                <p className="text-base md:text-lg text-black/60 font-light leading-relaxed tracking-wide max-w-md lg:mx-0">
                     {collection.description}
                 </p>
 

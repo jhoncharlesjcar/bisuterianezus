@@ -63,7 +63,7 @@ export function Footer() {
                   </div>
                   <div className="flex flex-col">
                     <h4 className="font-serif text-[14px] mb-[2px] text-white leading-none">{item.title}</h4>
-                    <p className="text-[8px] text-white/40 uppercase tracking-[0.15em] leading-[1.2] transition-colors group-hover:text-white/60">{item.desc}</p>
+                    <p className="text-[10px] text-white/40 uppercase tracking-[0.15em] leading-[1.2] transition-colors group-hover:text-white/60">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -235,7 +235,7 @@ export function Footer() {
                     </div>
                     <div className="flex flex-col text-left">
                       <h4 className="font-serif text-[14px] mb-[2px] text-white leading-none">Asesoría Vía WhatsApp</h4>
-                      <p className="text-[8px] text-white/40 uppercase tracking-[0.15em] leading-[1.2] mb-1 group-hover:text-white/60 transition-colors">Respuesta inmediata</p>
+                      <p className="text-[10px] text-white/40 uppercase tracking-[0.15em] leading-[1.2] mb-1 group-hover:text-white/60 transition-colors">Respuesta inmediata</p>
                       <span className="text-[14px] text-white/80 font-serif">935 128 673</span>
                     </div>
                   </motion.a>
@@ -253,7 +253,7 @@ export function Footer() {
                     </div>
                     <div className="flex flex-col text-left">
                       <h4 className="font-serif text-[14px] mb-[2px] text-white leading-none">Correo</h4>
-                      <p className="text-[8px] text-white/40 uppercase tracking-[0.15em] leading-[1.2] mb-1 group-hover:text-white/60 transition-colors">Te respondemos en 24h</p>
+                      <p className="text-[10px] text-white/40 uppercase tracking-[0.15em] leading-[1.2] mb-1 group-hover:text-white/60 transition-colors">Te respondemos en 24h</p>
                       <span className="text-[14px] text-white/80 font-serif">bisuterianezus@gmail.com</span>
                     </div>
                   </motion.a>
@@ -273,7 +273,7 @@ export function Footer() {
                     </div>
                     <div className="flex flex-col text-left">
                       <h4 className="font-serif text-[14px] mb-[2px] text-white leading-none">Ubicación</h4>
-                      <p className="text-[8px] text-white/40 uppercase tracking-[0.15em] leading-[1.2] mb-1 group-hover:text-white/60 transition-colors">Visítanos</p>
+                      <p className="text-[10px] text-white/40 uppercase tracking-[0.15em] leading-[1.2] mb-1 group-hover:text-white/60 transition-colors">Visítanos</p>
                       <span className="text-[14px] text-white/80 font-serif leading-snug">Jr. José Gálvez 444 stand N°25<br /> Magdalena del Mar, Lima, Perú</span>
                     </div>
                   </motion.a>
@@ -287,14 +287,14 @@ export function Footer() {
         <div className="border-t border-[#D4AF37]/15">
           <div className="container mx-auto px-4 md:px-8 lg:px-16 py-8 max-w-[1400px]">
             <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-              <p className="text-[8px] text-white/30 uppercase tracking-[0.25em] font-light text-center md:text-left leading-relaxed max-w-md">
+              <p className="text-[10px] text-white/30 uppercase tracking-[0.25em] font-light text-center md:text-left leading-relaxed max-w-md">
                 &copy; {new Date().getFullYear()} Nezus Bisutería Artesanal Fina. Todos los derechos reservados. Diseñado por Jcar Labs.
               </p>
 
               <div className="flex items-center gap-8">
-                <Link href="/politica-privacidad" className="text-[8px] text-white/30 hover:text-white uppercase tracking-[0.2em] font-light transition-all duration-300 hover:translate-y-[-1px]">Política de Privacidad</Link>
-                <Link href="/terminos" className="text-[8px] text-white/30 hover:text-white uppercase tracking-[0.2em] font-light transition-all duration-300 hover:translate-y-[-1px]">Términos de Uso</Link>
-                <span className="text-[8px] text-white/20 uppercase tracking-[0.2em] font-light">
+                <Link href="/politica-privacidad" className="text-[10px] text-white/30 hover:text-white uppercase tracking-[0.2em] font-light transition-all duration-300 hover:translate-y-[-1px]">Política de Privacidad</Link>
+                <Link href="/terminos" className="text-[10px] text-white/30 hover:text-white uppercase tracking-[0.2em] font-light transition-all duration-300 hover:translate-y-[-1px]">Términos de Uso</Link>
+                <span className="text-[10px] text-white/20 uppercase tracking-[0.2em] font-light">
                   Lima, Perú
                 </span>
               </div>
