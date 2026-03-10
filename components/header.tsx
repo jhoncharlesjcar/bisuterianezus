@@ -54,7 +54,7 @@ function TopTicker({ scrolled, variant = "transparent" }: { scrolled: boolean, v
       <div className="container mx-auto px-4 lg:px-12 max-w-7xl">
         <div className="flex items-center justify-center">
 
-          <div className="relative w-full h-4 flex items-center justify-center overflow-hidden text-center">
+          <div className="relative w-full h-8 md:h-6 flex items-center justify-center overflow-hidden text-center">
             <AnimatePresence mode="wait">
               <motion.p
                 key={msgIndex}
@@ -62,7 +62,7 @@ function TopTicker({ scrolled, variant = "transparent" }: { scrolled: boolean, v
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.6, ease: [0.25, 0.4, 0, 1] }}
-                className="text-[10px] md:text-xs text-white uppercase tracking-[0.15em] md:tracking-[0.2em] font-medium absolute w-full"
+                className="text-[9px] md:text-[10px] text-white uppercase tracking-[0.15em] md:tracking-[0.2em] font-medium absolute inset-0 flex items-center justify-center px-4 leading-snug"
               >
                 {topBarMessages[msgIndex]}
               </motion.p>
