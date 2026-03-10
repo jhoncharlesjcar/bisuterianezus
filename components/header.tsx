@@ -48,13 +48,13 @@ function TopTicker({ scrolled, variant = "transparent" }: { scrolled: boolean, v
     <div className={cn(
       "w-full transition-colors duration-500 z-30",
       isSolid
-        ? "bg-black text-white py-2"
-        : "bg-white/10 backdrop-blur-md border-b border-white/10 py-2.5"
+        ? "bg-black text-white py-1.5 lg:py-2"
+        : "bg-white/10 backdrop-blur-md border-b border-white/10 py-1.5 lg:py-2.5"
     )}>
       <div className="container mx-auto px-4 lg:px-12 max-w-7xl">
         <div className="flex items-center justify-center">
 
-          <div className="relative w-full h-8 md:h-6 flex items-center justify-center overflow-hidden text-center">
+          <div className="relative w-full h-[26px] md:h-6 flex items-center justify-center overflow-hidden text-center">
             <AnimatePresence mode="wait">
               <motion.p
                 key={msgIndex}
