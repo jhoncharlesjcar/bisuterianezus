@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useState, useEffect, useMemo } from "react"
 import { Menu, User, Heart, Search, ChevronDown, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -304,6 +304,7 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white border-l border-black/10 p-0">
+                <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
                 <div className="flex flex-col h-full bg-white">
                   <div className="p-6 border-b border-black/5 flex items-center gap-3">
                     <div className="flex flex-col">
