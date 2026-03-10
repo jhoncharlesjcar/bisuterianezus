@@ -34,10 +34,10 @@ export function CartSheet({ scrolled = true }: CartSheetProps) {
     return (
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-                <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("relative rounded-none transition-colors", scrolled ? "text-black hover:bg-black/5" : "text-black lg:text-white hover:bg-black/5 lg:hover:bg-white/10")}>
+                <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("relative rounded-none transition-colors", scrolled ? "text-black hover:bg-black/5" : "text-white hover:bg-white/10")}>
                     <ShoppingCart className="h-5 w-5" strokeWidth={1} />
                     {itemCount > 0 && (
-                        <span className={cn("absolute -top-1 -right-1 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center", scrolled ? "bg-black text-white" : "bg-black text-white lg:bg-white lg:text-black")}>
+                        <span className={cn("absolute -top-1 -right-1 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center", scrolled ? "bg-black text-white" : "bg-white text-black")}>
                             {itemCount}
                         </span>
                     )}

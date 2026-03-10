@@ -125,7 +125,7 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500 flex flex-col",
         isSolid
           ? "bg-white/95 backdrop-blur-md border-b border-black/5"
-          : "bg-white/90 backdrop-blur-md lg:bg-transparent lg:backdrop-blur-none border-transparent"
+          : "bg-transparent border-transparent"
       )}
     >
       <TopTicker scrolled={scrolled} variant={variant} />
@@ -135,7 +135,7 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
           <div className="flex items-center lg:hidden justify-self-start -ml-2">
             <Sheet>
               <SheetTrigger asChild>
-                <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-black hover:bg-black/5")}>
+                <Button suppressHydrationWarning variant="ghost" size="icon" className={cn("rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-white hover:bg-white/10")}>
                   <Menu className="h-6 w-6" strokeWidth={1} />
                 </Button>
               </SheetTrigger>
@@ -202,22 +202,13 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
                 </div>
               </SheetContent>
             </Sheet>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setSearchOpen(!searchOpen)}
-              className={cn("rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-black hover:bg-black/5")}
-            >
-              <Search className="h-5 w-5" strokeWidth={1} />
-            </Button>
           </div>
 
           {/* Logo */}
           <Link href="/" className="flex items-center group relative z-50 justify-self-center lg:justify-self-auto">
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-              <span className={cn("font-serif text-[22px] md:text-3xl font-light tracking-tight leading-none transition-colors duration-500", isSolid ? "text-black" : "text-black lg:text-white")}>NEZUS</span>
-              <span className={cn("text-[5px] md:text-[9px] tracking-[0.3em] uppercase mt-1 transition-colors duration-500", isSolid ? "text-black/60" : "text-black/60 lg:text-white/60")}>Bisutería Artesanal Fina</span>
+              <span className={cn("font-serif text-[22px] md:text-3xl font-light tracking-tight leading-none transition-colors duration-500", isSolid ? "text-black" : "text-white")}>NEZUS</span>
+              <span className={cn("text-[5px] md:text-[9px] tracking-[0.3em] uppercase mt-1 transition-colors duration-500", isSolid ? "text-black/60" : "text-white/60")}>Bisutería Artesanal Fina</span>
             </div>
           </Link>
 
@@ -319,17 +310,17 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
               variant="ghost"
               size="icon"
               onClick={() => setSearchOpen(!searchOpen)}
-              className={cn("hidden lg:flex rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-white hover:bg-white/10")}
+              className={cn("flex rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-white hover:bg-white/10")}
             >
               <Search className="h-5 w-5" strokeWidth={1} />
             </Button>
 
             {user && (
               <Link href="/perfil">
-                <Button variant="ghost" size="icon" className={cn("relative rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-black lg:text-white hover:bg-black/5 lg:hover:bg-white/10")}>
+                <Button variant="ghost" size="icon" className={cn("relative rounded-none transition-colors", isSolid ? "text-black hover:bg-black/5" : "text-white hover:bg-white/10")}>
                   <Heart className="h-5 w-5" strokeWidth={1} />
                   {wishlistCount > 0 && (
-                    <span className={cn("absolute top-1 right-1 text-[9px] w-4 h-4 flex items-center justify-center rounded-full", isSolid ? "bg-black text-white" : "bg-black text-white lg:bg-white lg:text-black")}>
+                    <span className={cn("absolute top-1 right-1 text-[9px] w-4 h-4 flex items-center justify-center rounded-full", isSolid ? "bg-black text-white" : "bg-white text-black")}>
                       {wishlistCount}
                     </span>
                   )}
