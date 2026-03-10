@@ -62,7 +62,7 @@ function TopTicker({ scrolled, variant = "transparent" }: { scrolled: boolean, v
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.6, ease: [0.25, 0.4, 0, 1] }}
-                className="text-[9px] md:text-[10px] text-white uppercase tracking-[0.15em] md:tracking-[0.2em] font-medium absolute inset-0 flex items-center justify-center px-4 leading-snug"
+                className="text-[7.5px] md:text-[10px] text-white uppercase tracking-[0.2em] font-medium absolute inset-0 flex items-center justify-center px-4 leading-snug"
               >
                 {topBarMessages[msgIndex]}
               </motion.p>
