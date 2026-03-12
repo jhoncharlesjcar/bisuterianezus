@@ -46,11 +46,21 @@
 
 ---
 
-## 🏗️ Arquitectura y Flujos
+## ✨ Refinamientos Recientes (v1.2)
 
-Para una visión profunda del sistema, consulta nuestra documentación especializada:
+Se han implementado mejoras estéticas para elevar la percepción premium de la marca:
+- **Footer de Lujo**: Logo "NEZUS" en fuente serif (Playfair Display) con tracking optimizado.
+- **Iconografía Social**: Rediseño de iconos (FB, IG, TikTok) en contenedores circulares minimalistas con inversión de color al pasar el cursor.
+- **Interacción Estándar**: Restablecimiento del cursor del sistema con respuesta visual (puntero/manito) en elementos interactivos (botones e imágenes).
+- **Limpieza de UI**: Simplificación de la barra inferior y actualización de geolocalización.
+
+---
+
+## 🏗️ Arquitectura y Documentación
+
+Para una visión profunda del sistema, consulta nuestra documentación:
 - 📑 **[Guía de Arquitectura](file:///C:/Users/Usuario/.gemini/antigravity/brain/5f20461e-2e06-40b5-8b0c-57488a4ea477/arquitectura_nezus.md)**: Detalle del stack y decisiones de ingeniería.
-- 🔄 **[Diagramas de Flujo](file:///C:/Users/Usuario/.gemini/antigravity/brain/5f20461e-2e06-40b5-8b0c-57488a4ea477/flujos_proyecto.md)**: Visualización de procesos de compra y autenticación.
+- 🔄 **[Último Walkthrough](file:///C:/Users/Usuario/.gemini/antigravity/brain/f460a5a4-95f2-41f2-88ce-da6f79795324/walkthrough.md)**: Historial de cambios rercientes en el diseño del footer y cursor.
 
 ---
 
