@@ -3,8 +3,8 @@ import type { Metadata } from "next"
 import { Playfair_Display, Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "@/components/ui/toaster"
-import { Providers } from "@/components/providers"
-import { PageTransition } from "@/components/page-transition"
+import { Providers } from "@/components/layout/providers"
+import { PageTransition } from "@/components/animations/page-transition"
 import "./globals.css"
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-sans" })

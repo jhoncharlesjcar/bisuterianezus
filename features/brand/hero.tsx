@@ -16,7 +16,7 @@ const slides = [
     description: "Maestría peruana que captura la belleza pura de la luz. Revela tu brillo interior con cristales y piedras concebidos para deslumbrar.",
     cta: "Descubrir la Colección",
     ctaLink: "/tienda",
-    video: "https://res.cloudinary.com/dn36m0jer/video/upload/v1771803952/nezus/videos/Generate_a_video_202602212203.mp4",
+    video: "https://res.cloudinary.com/dn36m0jer/video/upload/f_auto,q_auto/v1771803952/nezus/videos/Generate_a_video_202602212203.mp4",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const slides = [
     description: "Magia en cada detalle. Un despliegue de resplandor diseñado para transformar lo cotidiano en algo verdaderamente extraordinario.",
     cta: "Explorar el Privilegio",
     ctaLink: "/tienda?category=aretes",
-    video: "https://res.cloudinary.com/dn36m0jer/video/upload/v1771803957/nezus/videos/Generate_a_video_202602212221.mp4",
+    video: "https://res.cloudinary.com/dn36m0jer/video/upload/f_auto,q_auto/v1771803957/nezus/videos/Generate_a_video_202602212221.mp4",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ const slides = [
     description: "El virtuosismo de la bisutería fina se encuentra con el poder de la luz. Calidad inigualable que ilumina cada uno de tus instantes.",
     cta: "Conocer el Legado",
     ctaLink: "/#nosotros",
-    video: "https://res.cloudinary.com/dn36m0jer/video/upload/v1771803955/nezus/videos/Generate_a_video_202602212208.mp4",
+    video: "https://res.cloudinary.com/dn36m0jer/video/upload/f_auto,q_auto/v1771803955/nezus/videos/Generate_a_video_202602212208.mp4",
   },
 ]
 
@@ -167,7 +167,7 @@ export function Hero() {
               <HeroTitle text={slides[currentSlide].title} slideKey={currentSlide} />
 
               <motion.p
-                className="text-sm md:text-lg text-white/80 mb-6 md:mb-12 font-light leading-relaxed max-w-xl md:pr-12 md:mx-0 mx-auto tracking-wide"
+                className="text-[11px] md:text-[14px] text-white/80 mb-6 md:mb-12 font-light leading-relaxed max-w-xl md:pr-12 md:mx-0 mx-auto tracking-wide"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.7, ease: [0.25, 0.4, 0, 1] }}

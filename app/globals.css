@@ -78,6 +78,8 @@
 
 @theme inline {
   --font-sans: "Playfair Display", "Geist", "Geist Fallback";
+  --font-swarovski: var(--font-body), "ui-sans-serif", "system-ui", sans-serif;
+  --font-inter: var(--font-body), "Inter", "ui-sans-serif", "system-ui", sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -124,6 +126,11 @@
 
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+
+  img, button, .cursor-pointer {
+    cursor: pointer;
   }
 }
 
@@ -314,14 +321,4 @@ html {
 .img-parallax:hover {
   transform: scale(1.03);
 }
-
-/* D8: Premium custom cursor — small gold dot */
-@media (pointer: fine) {
-  * {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Ccircle cx='6' cy='6' r='5' fill='none' stroke='%23D4AF37' stroke-width='1.5'/%3E%3Ccircle cx='6' cy='6' r='1.5' fill='%23D4AF37'/%3E%3C/svg%3E") 6 6, auto;
-  }
-
-  a, button, [role="button"], input[type="submit"], select {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='8' cy='8' r='7' fill='none' stroke='%23D4AF37' stroke-width='1.5'/%3E%3Ccircle cx='8' cy='8' r='2' fill='%23D4AF37'/%3E%3C/svg%3E") 8 8, pointer;
-  }
-}
+

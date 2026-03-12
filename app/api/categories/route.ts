@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
-import { unstable_cache } from "next/cache"
+export const fetchCache = 'force-cache';
 
-// A4: Cached category fetching with 60s revalidation
-const getCachedCategories = unstable_cache(
-    async () => {
+export async function GET() {
+    try {
         const supabase = await createClient()
         const { data: categories, error } = await supabase
             .from("categories")
@@ -13,20 +12,11 @@ const getCachedCategories = unstable_cache(
             .order("name")
 
         if (error) {
-            console.error("Categories cache error:", error)
-            return []
+            console.error("Categories fetch error:", error)
+            return NextResponse.json({ categories: [] })
         }
 
-        return categories || []
-    },
-    ["categories-list"],
-    { revalidate: 60 }
-)
-
-export async function GET() {
-    try {
-        const categories = await getCachedCategories()
-        return NextResponse.json({ categories })
+        return NextResponse.json({ categories: categories || [] })
     } catch (error) {
         console.error("Categories error:", error)
         return NextResponse.json({ error: "Internal server error" }, { status: 500 })

@@ -1,16 +1,16 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
-import { ProductDetails } from "@/components/product-details"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { ProductDetails } from "@/features/products/product-details"
+import { Header } from "@/components/layout/header"
+import { Footer } from "@/components/layout/footer"
 
-import { ProductReviews } from "@/components/product-reviews"
-import { WriteReviewForm } from "@/components/write-review-form"
+import { ProductReviews } from "@/features/products/product-reviews"
+import { WriteReviewForm } from "@/features/products/write-review-form"
 import { Separator } from "@/components/ui/separator"
 import { Suspense } from "react"
 
-export const revalidate = 0
+export const revalidate = 3600 // 1 hour
 
 interface PageProps {
   params: Promise<{ slug: string }>

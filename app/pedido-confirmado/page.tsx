@@ -1,18 +1,24 @@
 "use client"
 
-import { Suspense } from "react"
+import { Suspense, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { CheckCircle2, Package, MessageCircle, ArrowRight, Loader2 } from "lucide-react"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
+import { Header } from "@/components/layout/header"
+import { Footer } from "@/components/layout/footer"
 import { Button } from "@/components/ui/button"
 import { SiWhatsapp } from "@icons-pack/react-simple-icons"
+import { useCart } from "@/lib/cart-context"
 
 function ConfirmacionContent() {
     const searchParams = useSearchParams()
     const orderId = searchParams.get("order") || "—"
+    const { clearCart } = useCart()
+
+    useEffect(() => {
+        clearCart()
+    }, [clearCart])
 
     return (
         <main className="min-h-screen bg-[#FAFAFA] text-black">

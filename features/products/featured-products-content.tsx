@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import ProductCard from "@/components/product-card"
+import ProductCard from "@/features/products/product-card"
 import type { Product } from "@/lib/types"
 import {
     Carousel,

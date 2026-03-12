@@ -17,7 +17,7 @@ import { useWishlist } from "@/lib/wishlist-context"
 import { useToast } from "@/hooks/use-toast"
 import { SiWhatsapp } from "@icons-pack/react-simple-icons"
 import { createClient } from "@/lib/supabase/client"
-import ProductCard from "@/components/product-card"
+import ProductCard from "@/features/products/product-card"
 
 interface ProductDetailsProps {
   product: Product

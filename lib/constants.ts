@@ -2,7 +2,7 @@ import { Category } from "@/lib/types"
 
 export const categoryImages: Record<string, string> = {
     aretes: "https://res.cloudinary.com/dn36m0jer/image/upload/v1771386082/nezus/products/aretes-gota-dorada-cristales.jpg",
-    collares: "https://res.cloudinary.com/dn36m0jer/image/upload/v1771387399/nezus/products/collar-perlas-flor-lila.jpg",
+    collares: "/images/collar-perlas-flor-lila.jpeg",
     pulseras: "https://res.cloudinary.com/dn36m0jer/image/upload/v1771387398/nezus/products/pulseras-mostacilla-pareja.jpg",
 }
 

@@ -14,7 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { SiTiktok, SiWhatsapp, SiInstagram } from "@icons-pack/react-simple-icons"
-import { CartSheet } from "@/components/cart-sheet"
+import { CartSheet } from "@/features/cart/cart-sheet"
 import { useAuth } from "@/lib/auth-context"
 import { useWishlist } from "@/lib/wishlist-context"
 import { useRouter } from "next/navigation"
@@ -27,7 +27,7 @@ import { categoryImages } from "@/lib/constants"
 
 const topBarMessages = [
   "Envíos gratis a todo el Perú en compras mayores a S/100",
-  "Pago 100% Seguro · Yape · Plin · Transferencia Bancaria",
+  "Pago Seguro y Confirmaciones Directas vía WhatsApp",
   "Asesoría personalizada por WhatsApp +51 935 128 673",
   "Lima · Arequipa · Cusco · Chiclayo · Piura · Huancayo · Ica",
 ]
@@ -48,13 +48,13 @@ function TopTicker({ scrolled, variant = "transparent" }: { scrolled: boolean, v
     <div className={cn(
       "w-full transition-colors duration-500 z-30",
       isSolid
-        ? "bg-black text-white py-1.5 lg:py-2"
-        : "bg-white/10 backdrop-blur-md border-b border-white/10 py-1.5 lg:py-2.5"
+        ? "bg-black text-white py-1 lg:py-1.5"
+        : "bg-white/10 backdrop-blur-md border-b border-white/10 py-1 lg:py-2"
     )}>
       <div className="container mx-auto px-4 lg:px-12 max-w-7xl">
         <div className="flex items-center justify-center">
 
-          <div className="relative w-full h-[26px] md:h-6 flex items-center justify-center overflow-hidden text-center">
+          <div className="relative w-full h-[21px] md:h-[19px] flex items-center justify-center overflow-hidden text-center">
             <AnimatePresence mode="wait">
               <motion.p
                 key={msgIndex}
@@ -62,7 +62,7 @@ function TopTicker({ scrolled, variant = "transparent" }: { scrolled: boolean, v
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.6, ease: [0.25, 0.4, 0, 1] }}
-                className="text-[7.5px] md:text-[10px] text-white uppercase tracking-[0.2em] font-medium absolute inset-0 flex items-center justify-center px-4 leading-snug"
+                className="text-[8px] sm:text-[9px] md:text-[11px] text-white uppercase tracking-[0.15em] font-medium absolute inset-0 flex items-center justify-center px-4 leading-snug"
               >
                 {topBarMessages[msgIndex]}
               </motion.p>
@@ -76,7 +76,7 @@ function TopTicker({ scrolled, variant = "transparent" }: { scrolled: boolean, v
 }
 
 
-export function Header({ variant = "transparent" }: { variant?: "transparent" | "solid" }) {
+export function Header({ variant = "transparent", hideTicker = false }: { variant?: "transparent" | "solid", hideTicker?: boolean }) {
   const { user, profile, loading, signOut } = useAuth()
   const { itemCount: wishlistCount } = useWishlist()
   const router = useRouter()
@@ -128,7 +128,7 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
           : "bg-transparent border-transparent"
       )}
     >
-      <TopTicker scrolled={scrolled} variant={variant} />
+      {!hideTicker && <TopTicker scrolled={scrolled} variant={variant} />}
       <div className={cn("container mx-auto px-4 max-w-7xl transition-all duration-500", isSolid ? "py-2" : "py-2 lg:py-4")}>
         <div className="grid grid-cols-[1fr_auto_1fr] lg:flex lg:justify-between items-center h-14 lg:h-16 w-full">
           {/* Mobile Left Actions */}
@@ -277,24 +277,27 @@ export function Header({ variant = "transparent" }: { variant?: "transparent" | 
                       </div>
 
                       <div className="col-span-9 grid grid-cols-3 gap-6">
-                        {categories.slice(0, 3).map((category) => (
-                          <Link
-                            key={category.id}
-                            href={`/tienda?category=${category.slug}`}
-                            className="group relative overflow-hidden bg-[#FAFAFA] aspect-[3/4]"
-                            onClick={() => setShowMegaMenu(false)}
-                          >
-                            <Image
-                              src={category.image_url || categoryImages[category.slug] || "/images/placeholder-category.jpg"}
-                              alt={category.name}
-                              fill
-                              sizes="(max-width: 768px) 100vw, 280px"
-                              className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
-                            />
-                            <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
-                              <h4 className="text-lg font-serif font-light text-white tracking-wide">{category.name}</h4>
-                            </div>
-                          </Link>
+                        {categories
+                          .filter((c) => ["aretes", "collares", "pulseras"].includes(c.slug))
+                          .slice(0, 3)
+                          .map((category) => (
+                            <Link
+                              key={category.id}
+                              href={`/tienda?category=${category.slug}`}
+                              className="group relative overflow-hidden bg-[#FAFAFA] aspect-[3/4]"
+                              onClick={() => setShowMegaMenu(false)}
+                            >
+                              <Image
+                                src={categoryImages[category.slug] || category.image_url || "/images/placeholder-category.jpg"}
+                                alt={category.name}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 280px"
+                                className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+                              />
+                              <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
+                                <h4 className="text-lg font-serif font-light text-white tracking-wide">{category.name}</h4>
+                              </div>
+                            </Link>
                         ))}
                       </div>
                     </div>

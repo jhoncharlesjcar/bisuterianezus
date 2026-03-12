@@ -12,9 +12,8 @@ import { useCart } from "@/lib/cart-context"
 import { useAuth } from "@/lib/auth-context"
 import { useWishlist } from "@/lib/wishlist-context"
 import { useToast } from "@/hooks/use-toast"
-import { QuickViewModal } from "@/components/quick-view-modal"
+import { QuickViewModal } from "@/features/products/quick-view-modal"
 import { cn } from "@/lib/utils"
-import { useIsMobile } from "@/hooks/use-mobile"
 
 interface ProductCardProps {
   product: Product
@@ -28,7 +27,6 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { toast } = useToast()
   const [isAdding, setIsAdding] = useState(false)
   const [showQuickView, setShowQuickView] = useState(false)
-  const isMobile = useIsMobile()
 
   const inWishlist = isInWishlist(product.id)
 
@@ -87,7 +85,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           <Link href={`/producto/${product.slug}`} className="block h-full relative">
             <Image
               src={product.image_url || "/placeholder.svg"}
-              alt={product.name}
+              alt={`Joya Nezus: ${product.name}`}
               fill
               className="object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-0"
               style={product.image_position ? { objectPosition: product.image_position } : undefined}
@@ -113,14 +111,14 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           <div className="absolute top-4 right-4 flex flex-col gap-3 z-30 translate-x-0 opacity-100 md:translate-x-12 md:opacity-0 md:group-hover:translate-x-0 md:group-hover:opacity-100 transition-all duration-500">
             <button
               onClick={handleWishlist}
-              className="w-8 h-8 md:w-10 md:h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors shadow-sm md:hover:bg-black md:hover:text-white"
+              className="w-11 h-11 md:w-10 md:h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors shadow-sm md:hover:bg-black md:hover:text-white"
               aria-label="Añadir a favoritos"
             >
               <Heart className={cn("h-3.5 w-3.5 md:h-4 md:w-4", inWishlist && "fill-current text-red-500")} />
             </button>
             <button
               onClick={handleQuickView}
-              className="hidden md:flex w-8 h-8 md:w-10 md:h-10 bg-white/90 backdrop-blur-sm rounded-full items-center justify-center transition-colors shadow-sm md:hover:bg-black md:hover:text-white"
+              className="hidden md:flex w-11 h-11 md:w-10 md:h-10 bg-white/90 backdrop-blur-sm rounded-full items-center justify-center transition-colors shadow-sm md:hover:bg-black md:hover:text-white"
               aria-label="Vista rápida"
             >
               <Eye className="h-3.5 w-3.5 md:h-4 md:w-4" />
@@ -168,10 +166,10 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
           </Link>
 
           {/* Mobile Only: Always visible Add to Cart */}
-          {product.in_stock && isMobile && (
+          {product.in_stock && (
             <Button
               variant="outline"
-              className="w-full mt-4 rounded-none text-xs tracking-widest uppercase border-black/20 hover:bg-black hover:text-white transition-colors h-11"
+              className="md:hidden w-full mt-4 rounded-none text-xs tracking-widest uppercase border-black/20 hover:bg-black hover:text-white transition-colors h-11"
               onClick={handleAddToCart}
               disabled={isAdding}
             >
